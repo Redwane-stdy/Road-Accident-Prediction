@@ -49,7 +49,7 @@ object DataCleaner {
     // Note: Certains véhicules en fuite peuvent ne pas avoir de conducteur dans la table usagers
     // selon la documentation BAAC (24 cas en 2024)
     // Codes catégories véhicules (catv):
-    // 1=Vélo, 7=VL, 13-17=PL, 30-34=2RM (scooters/motos)
+    // Pour plus d'info sur les codes utilisés voir description-des-bases-de-donnees-annuelles.pdf
     val vehiculesClean = vehicules
       .withColumn("catv_int", safeInt("catv"))
     
@@ -117,7 +117,7 @@ object DataCleaner {
         .otherwise(lit(null)))
       .withColumn("jour_semaine", dayofweek(col("date_complete")))
       .withColumn("weekend", when(col("jour_semaine").isin(1, 7), 1).otherwise(0))
-      // MAINTENANT remplacer les valeurs manquantes (sur les colonnes _int)
+      // Remplacer les valeurs manquantes (sur les colonnes _int)
       .withColumn("lum", when(col("lum_int").isNull or col("lum_int") === -1 or col("lum_int") === 0, 1).otherwise(col("lum_int")))
       .withColumn("atm", when(col("atm_int").isNull or col("atm_int") === -1, 1).otherwise(col("atm_int")))
       .withColumn("col", when(col("col_int").isNull or col("col_int") === -1, 7).otherwise(col("col_int")))
@@ -134,6 +134,7 @@ object DataCleaner {
             "lat_clean", "long_clean", "lat_double", "long_double", "date_complete")
     
     // 4. Nettoyer les lieux
+    // Pour plus d'info sur les codes utilisés voir description-des-bases-de-donnees-annuelles.pdf
     val lieuxClean = lieux
       .withColumn("catr_int", safeInt("catr"))
       .withColumn("circ_int", safeInt("circ"))

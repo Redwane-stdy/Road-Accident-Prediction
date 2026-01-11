@@ -50,7 +50,7 @@ object ModelTrainer {
   private def trainRandomForest(trainingData: DataFrame, testData: DataFrame): (PipelineModel, Map[String, Double]) = {
     println("\n--- Random Forest ---")
     
-    val rf = new RandomForestClassifier()
+    val rf = new RandomForestClassifier() 
       .setLabelCol("label")
       .setFeaturesCol("features")
       .setNumTrees(100)
@@ -161,10 +161,7 @@ object ModelTrainer {
     )
   }
 
-  /**
-   * CORRECTION MAJEURE : accepte le featurePipeline pour transformer les données brutes
-   * Sauvegarde uniquement les colonnes scalaires (pas de Vector)
-   */
+  
   def savePredictions(
     models: Map[String, (PipelineModel, Map[String, Double])],
     rawDf: DataFrame,
@@ -173,7 +170,6 @@ object ModelTrainer {
   ): Unit = {
     println(s"\n=== Sauvegarde des prédictions ===")
 
-    // ✅ Transformer les données brutes avec le pipeline de features
     val transformedDf = featurePipeline.transform(rawDf)
 
     val preparedDf = transformedDf.select(
@@ -186,7 +182,7 @@ object ModelTrainer {
     models.foreach { case (modelName, (model, _)) =>
       val predictions = model.transform(preparedDf)
 
-      // ✅ CORRECTION CSV : Extraire la probabilité de la classe 1 (accident grave)
+      // extraire la probabilité de la classe 1 (accident grave)
       val probabilityUdf = udf((prob: org.apache.spark.ml.linalg.Vector) => prob(1))
 
       val predictionsForCsv = predictions

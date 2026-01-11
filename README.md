@@ -64,5 +64,3 @@ python dashboard.py
 
 ./run_project.sh
 ```
-
-

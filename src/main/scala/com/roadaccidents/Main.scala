@@ -32,14 +32,12 @@ object Main {
       FeatureEngineering.analyzeGeography(cleanedData)
 
       // ÉTAPE 4: Feature Engineering
-      // ✅ RÉCUPÈRE LE PIPELINE MODEL
       val (preparedData, featurePipeline, featureNames) = FeatureEngineering.prepareFeatures(cleanedData)
 
       // ÉTAPE 5: Entraînement
       val models = ModelTrainer.trainModels(preparedData, spark)
 
       // ÉTAPE 6: Sauvegarde
-      // ✅ PASSE LE PIPELINE ET LES DONNÉES BRUTES
       ModelTrainer.savePredictions(models, cleanedData, featurePipeline)
       ModelTrainer.saveMetrics(models, spark)
 

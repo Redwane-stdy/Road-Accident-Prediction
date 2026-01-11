@@ -8,8 +8,17 @@ import org.apache.spark.sql.functions._
 object FeatureEngineering {
   
   /**
-   * CORRECTION MAJEURE : retourne (DataFrame transformé, PipelineModel)
-   * Le PipelineModel sera réutilisé pour les prédictions
+   * Définit les features et le pipeline d'entrainement pour les models
+   * On va utiliser plusieurs modèles et choisir le meilleur de ModelTrainer.scala
+   * Pour les features on choisit les indicatures qui ont le plus d'influences sur 
+   * le gravité des accidents. 
+   * 
+   * Pour la suite du projet on pourrait essayer de pondérer les décisions pour éviter
+   * que le model soit trop safe : Dire non-grave tout le temps car il y a plus de non grave
+   * dans les données d'entrainement pour avoir une meilleur précision.
+   * 
+   * (Ce n'est qu'une suggestion pour la poursuite du projet)
+   * 
    */
   def prepareFeatures(df: DataFrame): (DataFrame, PipelineModel, Array[String]) = {
     println("\n=== Préparation des features ===")
@@ -50,7 +59,6 @@ object FeatureEngineering {
     val pipeline = new Pipeline()
       .setStages(indexers ++ encoders :+ assembler)
 
-    // FIT et TRANSFORM
     val pipelineModel = pipeline.fit(df)
     val transformedDf = pipelineModel.transform(df)
 
@@ -58,7 +66,6 @@ object FeatureEngineering {
     println(s"Features numériques: ${numericFeatures.mkString(", ")}")
     println(s"Features catégorielles: ${categoricalFeatures.mkString(", ")}")
 
-    // ✅ RETOURNE LE MODELE EN PLUS DU DATAFRAME
     (transformedDf, pipelineModel, allFeatureCols)
   }
 

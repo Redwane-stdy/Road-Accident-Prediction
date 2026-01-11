@@ -13,14 +13,15 @@ object DataLoader {
    * - Les données "blessé hospitalisé" depuis 2018 ne sont plus labellisées
    * - Les usagers en fuite depuis 2021 peuvent avoir des informations manquantes
    * - Base brute non corrigée des erreurs de saisie
+   *  Pour plus d'info sur les données en général : voir description-des-bases-de-donnees-annuelles.pdf
    */
   def loadData(spark: SparkSession, basePath: String = "data"): Map[String, DataFrame] = {
     println("=== Chargement des données ===")
     
     // Schémas pour chaque fichier
-    // IMPORTANT: Les données françaises utilisent la virgule comme séparateur décimal
+    // Les données françaises utilisent la virgule comme séparateur décimal
     // On doit utiliser un point, donc on charge toutes les données en String et 
-    // dans DataCleaner.scala on fera les conversions.
+    // dans DataCleaner.scala on fera les conversions de types.
     val caracteristiquesSchema = StructType(Array(
       StructField("Num_Acc", StringType, nullable = false),
       StructField("jour", StringType, nullable = true),     // String car peut avoir zéros devant
