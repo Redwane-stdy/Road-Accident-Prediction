@@ -10,33 +10,26 @@ echo "  PROJET CSC5003 - ANALYSE ACCIDENTS ROUTIERS"
 echo "============================================================"
 echo ""
 
-# Couleurs pour l'affichage
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
-
 # Fonction pour afficher les étapes
 step() {
-    echo -e "${GREEN}>>> ÉTAPE $1${NC}"
+    echo -e ">>> ÉTAPE $1"
 }
 
 error() {
-    echo -e "${RED}❌ ERREUR: $1${NC}"
+    echo -e ">>> ERREUR: $1"
     exit 1
 }
 
 warning() {
-    echo -e "${YELLOW}⚠️  ATTENTION: $1${NC}"
+    echo -e ">>> ATTENTION: $1"
 }
 
 info() {
-    echo -e "${BLUE}ℹ️  $1${NC}"
+    echo -e ">>> INFO:  $1"
 }
 
 success() {
-    echo -e "${GREEN}✓ $1${NC}"
+    echo -e ">>> SUCCESS: $1"
 }
 
 # ============================================================================
@@ -120,7 +113,6 @@ done
 # ============================================================================
 step "5/7 - Compilation et exécution du pipeline Spark"
 
-info "⏳ Cette étape peut prendre 3-5 minutes..."
 info "Le pipeline va:"
 info "  1. Charger et nettoyer les données"
 info "  2. Effectuer l'analyse exploratoire"
@@ -226,5 +218,6 @@ if [ -d "data/metrics.csv" ] && [ -n "$(ls -A data/metrics.csv/*.csv 2>/dev/null
     echo ""
 fi
 
-echo "🎉 Pipeline terminé! Consultez les visualisations dans votre navigateur."
+echo " Pipeline terminé! Consultez les visualisations dans votre navigateur."
+echo " Commande: open data/visualizations*.html"
 echo ""

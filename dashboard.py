@@ -41,10 +41,10 @@ try:
     # Métriques des modèles
     metrics = load_spark_csv("data/metrics.csv/part-*.csv")
     
-    # Prédictions (on prend RandomForest comme exemple)
+    # Prédictions (on prend RandomForest comme exemple car c'est le modèle qui a les meilleurs résultats)
     predictions_rf = load_spark_csv("data/predictions/randomforest_predictions.csv/part-*.csv")
     
-    # Données préparées pour visualisation - SOURCE PRINCIPALE
+    # Données préparées pour visualisation 
     viz_data = load_spark_csv("data/prepared_for_viz.csv/part-*.csv")
     
     if viz_data is None or metrics is None:
@@ -56,7 +56,7 @@ try:
     print(f"  - Données viz: {len(viz_data)} accidents")
     
 except Exception as e:
-    print(f"⚠ Erreur de chargement: {e}")
+    print(f"Erreur de chargement: {e}")
     print("Les fichiers générés par Spark doivent être présents.")
     exit(1)
 
@@ -70,7 +70,7 @@ print("=" * 80)
 
 def calculate_severity_stats(df, column, labels_dict=None):
     """
-    Calcule le taux de gravité par modalité d'une variable
+    Calcule le taux de gravité en fonction d'un paramètre
     
     Args:
         df: DataFrame
@@ -94,7 +94,7 @@ def calculate_severity_stats(df, column, labels_dict=None):
     else:
         stats['label'] = stats[column].astype(str)
     
-    print(f"✓ Statistiques calculées pour '{column}'")
+    print(f" Statistiques calculées pour '{column}'")
     return stats
 
 # Dictionnaires de labels (basés sur la documentation BAAC)
@@ -154,7 +154,7 @@ correlation_vehicules = calculate_severity_stats(viz_data, 'nb_vehicules')
 correlation_pl = calculate_severity_stats(viz_data, 'has_pl', labels_has_pl)
 correlation_weekend = calculate_severity_stats(viz_data, 'weekend', labels_weekend)
 
-print(f"\n✓ Toutes les corrélations calculées dynamiquement")
+print(f"\n Toutes les corrélations calculées dynamiquement")
 
 # ============================================================================
 # VISUALISATIONS
@@ -532,7 +532,7 @@ def create_summary_dashboard():
         mode="number+delta",
         value=taux_global,
         title={"text": "Taux de Gravité Global"},
-        delta={'reference': 25, 'suffix': ' pts'},
+        #delta={'reference': 25, 'suffix': ' pts'},
         domain={'x': [0, 0.25], 'y': [0.7, 1]},
         number={'suffix': '%', 'valueformat': '.1f'}
     ))
@@ -594,9 +594,14 @@ print("=" * 80)
 output_dir = Path("data/visualizations")
 output_dir.mkdir(parents=True, exist_ok=True)
 
+
+#"02_comparaison_modeles.html": create_model_comparison(),
+# Les modèles predisent plus souent non grave pour améliorer leur précision.
+# L'étude des données ne permet pas d'extraire des tendances pour savoir si les accidents
+# sont plus ou moins graves. 
+# Voir les détails dans modelPasUtile.md
 visualizations = {
     "01_synthese_dashboard.html": create_summary_dashboard(),
-    "02_comparaison_modeles.html": create_model_comparison(),
     "03_facteurs_risque.html": create_severity_factors(),
     "04_analyse_temporelle.html": create_temporal_analysis(),
     "05_impact_vehicules.html": create_vehicle_analysis(),
@@ -606,17 +611,17 @@ visualizations = {
 for filename, fig in visualizations.items():
     filepath = output_dir / filename
     fig.write_html(str(filepath))
-    print(f"✓ {filename}")
+    print(f" {filename}")
 
 print("\n" + "=" * 80)
 print("VISUALISATIONS GÉNÉRÉES AVEC SUCCÈS!")
 print("=" * 80)
-print(f"\n📁 Fichiers disponibles dans: {output_dir}/")
+print(f"\n Fichiers disponibles dans: {output_dir}/")
 print("\nOuvrez les fichiers HTML dans votre navigateur pour explorer les résultats.")
 print("\n Pour tout voir utiliser la commande : open data/visualizations/*.html ")
 
 # Afficher les insights clés calculés dynamiquement
-print("\n🎯 Insights clés (calculés dynamiquement):")
+print("\n Insights clés (calculés dynamiquement):")
 print(f"  • {metrics.loc[metrics['accuracy'].idxmax(), 'model']} est le meilleur modèle ({metrics['accuracy'].max()*100:.2f}% accuracy)")
 print(f"  • {correlation_atm.iloc[0]['label']}: risque le plus élevé ({correlation_atm.iloc[0]['taux_gravite']:.2f}%)")
 print(f"  • {correlation_agg.iloc[0]['label']}: {correlation_agg.iloc[0]['taux_gravite']:.2f}% vs {correlation_agg.iloc[1]['taux_gravite']:.2f}% {correlation_agg.iloc[1]['label']}")
