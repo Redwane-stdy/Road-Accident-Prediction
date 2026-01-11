@@ -98,7 +98,7 @@ Precision = 6,150 / (6,150 + 2,459) = 71.5%
 **Réponse** : Oui, dans 71.5% des cas
 
 **C'est bien ou pas ?**
-✅ **Plutôt bien** - 7 alertes sur 10 sont justifiées
+**Plutôt bien** - 7 alertes sur 10 sont justifiées
 - Évite trop de fausses alarmes
 - Les secours sont mobilisés à bon escient dans la majorité des cas
 
@@ -115,7 +115,7 @@ Recall = 6,150 / (6,150 + 13,772) = 30.9%
 **Réponse** : Seulement 30.9%
 
 **C'est bien ou pas ?**
-❌ **Très mauvais** - Le modèle rate 69% des accidents graves !
+**Très mauvais** - Le modèle rate 69% des accidents graves !
 - Inacceptable pour un système de sécurité
 - Beaucoup trop de victimes non secourues à temps
 
