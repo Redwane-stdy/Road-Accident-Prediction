@@ -9,11 +9,7 @@ object DataLoader {
   /**
    * Charge les 4 fichiers CSV des accidents de 2023
    * 
-   * AVERTISSEMENT (selon documentation BAAC):
-   * - Les données "blessé hospitalisé" depuis 2018 ne sont plus labellisées
-   * - Les usagers en fuite depuis 2021 peuvent avoir des informations manquantes
-   * - Base brute non corrigée des erreurs de saisie
-   *  Pour plus d'info sur les données en général : voir description-des-bases-de-donnees-annuelles.pdf
+   *  voir description-des-bases-de-donnees-annuelles.pdf pour voir les détails de la bdd.
    */
   def loadData(spark: SparkSession, basePath: String = "data"): Map[String, DataFrame] = {
     println("=== Chargement des données ===")
