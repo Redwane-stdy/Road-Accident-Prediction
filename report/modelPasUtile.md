@@ -21,29 +21,21 @@ RÉALITÉ              (TN)        (FP)
 
 ## 🔍 Analyse Détaillée
 
-### 1. (True Negative) = 48,479 ✅
+### 1. (True Negative)
 
 **Ce que ça signifie** :
 - Accidents **réellement non-graves** ET **prédits non-graves**
-
-**Proportion** :
-- 48,479 / 50,938 = **95.2%** des accidents non-graves bien identifiés
-- 48,479 / 70,860 = **68.4%** du total des prédictions
 
 **Interprétation** :
 **Excellent** - Le modèle est très bon pour reconnaître les accidents non-graves
 
 ---
 
-### 2. FP (False Positive) = 2,459 ⚠️
+### 2. FP (False Positive)
 
 **Ce que ça signifie** :
 - Accidents **réellement non-graves** mais **prédits graves**
 - Fausse alarme - le modèle se trompe en étant trop prudent
-
-**Proportion** :
-- 2,459 / 50,938 = **4.8%** des accidents non-graves mal classés
-- 2,459 / 8,609 = **28.5%** des prédictions "grave" sont fausses
 
 **Conséquences** :
 - Mobilisation inutile de secours
@@ -59,7 +51,7 @@ Et le modèle le fait très peu, ce qui est acceptable. Mais il faudrait travail
 la baisser afin de ne pas manquer de ressources pour les accidents réellement graves.
 ---
 
-### 3. FN (False Negative) = 13,772 ❌
+### 3. FN (False Negative)
 
 **Ce que ça signifie** :
 - Accidents **réellement graves** mais **prédits non-graves**
@@ -78,7 +70,7 @@ la baisser afin de ne pas manquer de ressources pour les accidents réellement g
 
 ---
 
-### 4. TP (True Positive) = 6,150 ✅
+### 4. TP (True Positive)
 
 **Ce que ça signifie** :
 - Accidents **réellement graves** ET **prédits graves**
@@ -89,10 +81,6 @@ la baisser afin de ne pas manquer de ressources pour les accidents réellement g
 
 ### Precision (Classe Grave)
 
-```
-Precision = TP / (TP + FP)
-Precision = 6,150 / (6,150 + 2,459) = 71.5%
-```
 
 **Question** : Quand le modèle dit "grave", a-t-il raison ?
 **Réponse** : Oui, dans 71.5% des cas
@@ -106,11 +94,6 @@ Precision = 6,150 / (6,150 + 2,459) = 71.5%
 
 ### Recall (Classe Grave)
 
-```
-Recall = TP / (TP + FN)
-Recall = 6,150 / (6,150 + 13,772) = 30.9%
-```
-
 **Question** : Parmi tous les accidents graves, quel % est détecté ?
 **Réponse** : Seulement 30.9%
 
@@ -123,11 +106,6 @@ Recall = 6,150 / (6,150 + 13,772) = 30.9%
 
 ### F1-Score (Classe Grave)
 
-```
-F1 = 2 × (Precision × Recall) / (Precision + Recall)
-F1 = 2 × (0.715 × 0.309) / (0.715 + 0.309) = 43.1%
-```
-
 **Question** : Quel est l'équilibre global ?
 **Réponse** : 43.1% - Score moyen
 
@@ -139,11 +117,6 @@ Le déséquilibre entre Precision (71.5%) et Recall (30.9%) est trop important
 ---
 
 ### Accuracy Globale
-
-```
-Accuracy = (TP + TN) / Total
-Accuracy = (6,150 + 48,479) / 70,860 = 77.1%
-```
 
 **Question** : Quelle proportion de prédictions est correcte ?
 **Réponse** : 77.1%
@@ -160,8 +133,8 @@ En prédisant tout le temps non-grave il peut atteindre les 70% de précisions.
 ### 1. Classes déséquilibrées
 
 ```
-Non-Graves : 50,938 (71.9%)
-Graves     : 19,922 (28.1%)
+Non-Graves : (71.9%)
+Graves     : (28.1%)
 ```
 
 **Conséquence** :
