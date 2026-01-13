@@ -602,6 +602,7 @@ output_dir.mkdir(parents=True, exist_ok=True)
 # Voir les détails dans modelPasUtile.md
 visualizations = {
     "01_synthese_dashboard.html": create_summary_dashboard(),
+    "02_comparaison_modeles.html": create_model_comparison(),
     "03_facteurs_risque.html": create_severity_factors(),
     "04_analyse_temporelle.html": create_temporal_analysis(),
     "05_impact_vehicules.html": create_vehicle_analysis(),

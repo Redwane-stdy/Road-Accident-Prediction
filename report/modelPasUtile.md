@@ -8,13 +8,13 @@
                     PRÉDICTION
                     Non-Grave    Grave
          
-         Non-Grave    48,479      2,459     Total: 50,938
-RÉALITÉ              (TN)        (FP)       (71.9%)
+         Non-Grave    9696        492     
+RÉALITÉ              (TN)        (FP)       
          
-         Grave        13,772      6,150     Total: 19,922
-                      (FN)        (TP)       (28.1%)
+         Grave        2754        1230    
+                      (FN)        (TP)       
                       
-         Total        62,251      8,609      70,860
+        
 ```
 
 ---
