@@ -1,8 +1,37 @@
-# Road Accident Severity Prediction
+<p align="center">
+  <img src="https://img.icons8.com/fluency/96/car-accident.png" alt="Road Accident Prediction Logo" width="96"/>
+</p>
 
-> **CSC5003 – Analyse et Prédiction des Accidents de la Route**
+<h1 align="center">Road Accident Severity Prediction</h1>
 
-A distributed machine-learning pipeline that predicts the severity of road accidents from their initial characteristics (location, weather, time of day) to help emergency services allocate resources more effectively.
+<p align="center">
+  <em>CSC5003 – Analyse et Prédiction des Accidents de la Route</em>
+</p>
+
+<p align="center">
+  A distributed machine-learning pipeline that predicts the severity of road accidents<br/>
+  from their initial characteristics (location, weather, time of day)<br/>
+  to help emergency services allocate resources more effectively.
+</p>
+
+<p align="center">
+  <!-- Core stack -->
+  <img src="https://img.shields.io/badge/Scala-2.12.15-DC322F?style=for-the-badge&logo=scala&logoColor=white" alt="Scala"/>
+  <img src="https://img.shields.io/badge/Apache%20Spark-3.3.0-E25A1C?style=for-the-badge&logo=apachespark&logoColor=white" alt="Apache Spark"/>
+  <img src="https://img.shields.io/badge/Java-8-007396?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 8"/>
+  <img src="https://img.shields.io/badge/SBT-1.x-22BAF1?style=for-the-badge&logo=scala&logoColor=white" alt="SBT"/>
+  <br/>
+  <!-- Python stack -->
+  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/Plotly-5.x-3F4F75?style=for-the-badge&logo=plotly&logoColor=white" alt="Plotly"/>
+  <img src="https://img.shields.io/badge/pandas-2.x-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="pandas"/>
+  <img src="https://img.shields.io/badge/scikit--learn-1.x-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="scikit-learn"/>
+  <br/>
+  <!-- Meta -->
+  <img src="https://img.shields.io/badge/Dataset-2023%20French%20Road%20Accidents-blue?style=for-the-badge" alt="Dataset"/>
+  <img src="https://img.shields.io/badge/Accidents-~62%2C000-important?style=for-the-badge" alt="~62,000 accidents"/>
+  <img src="https://img.shields.io/badge/Models-Random%20Forest%20%7C%20LR%20%7C%20DT-success?style=for-the-badge" alt="Models"/>
+</p>
 
 ---
 
@@ -64,6 +93,19 @@ Raw CSVs (4 files)
 ---
 
 ## Tech Stack
+
+<p>
+  <img src="https://img.shields.io/badge/Scala-2.12.15-DC322F?style=flat-square&logo=scala&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Apache%20Spark-3.3.0-E25A1C?style=flat-square&logo=apachespark&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Spark%20MLlib-3.3.0-E25A1C?style=flat-square&logo=apachespark&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Java-8-007396?style=flat-square&logo=openjdk&logoColor=white"/>
+  <img src="https://img.shields.io/badge/SBT-build%20tool-22BAF1?style=flat-square&logo=scala&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Plotly-interactive%20viz-3F4F75?style=flat-square&logo=plotly&logoColor=white"/>
+  <img src="https://img.shields.io/badge/pandas-data%20wrangling-150458?style=flat-square&logo=pandas&logoColor=white"/>
+  <img src="https://img.shields.io/badge/scikit--learn-ML%20utils-F7931E?style=flat-square&logo=scikit-learn&logoColor=white"/>
+  <img src="https://img.shields.io/badge/seaborn-statistical%20plots-4C72B0?style=flat-square"/>
+</p>
 
 | Layer | Technology |
 |---|---|
