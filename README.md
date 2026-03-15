@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://img.icons8.com/fluency/96/car-accident.png" alt="Road Accident Prediction Logo" width="96"/>
-</p>
-
 <h1 align="center">Road Accident Severity Prediction</h1>
 
 <p align="center">
@@ -277,4 +273,4 @@ In a safety-critical context, **false negatives are far more costly than false p
 
 ## License
 
-Academic project — CSC5003. Not licensed for production use.
+Not licensed for production use.
